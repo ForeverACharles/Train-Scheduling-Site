@@ -24,7 +24,7 @@
        	return;
     }
     
-    String query = "select * from Users where username=?";
+    String query = "select * from Customer where c_username=?";
     
     
     
@@ -39,10 +39,19 @@
     if (!rs.next()) {
     	session.setAttribute("user", userid); // the username will be stored in the session
     	
-    	String updateQuery = "insert into Users(username, password) values(?,?)";
+    	//Customer should be prompted for this data.
+    	String email = "name@gmail.com";
+    	String lastName = "Johnson";
+    	String firstName = "Bob";
+    	
+    	String updateQuery = "insert into Customer(c_email, c_last_name, c_first_name, c_username, c_password) values(?,?,?,?,?)";
     	PreparedStatement stmt2 = con.prepareStatement(updateQuery);
-    	stmt2.setString(1, userid);
-    	stmt2.setString(2, pwd);
+    	
+    	stmt2.setString(1, email);
+    	stmt2.setString(2, lastName);
+    	stmt2.setString(3, firstName);
+    	stmt2.setString(4, userid);
+    	stmt2.setString(5, pwd);
         
      	stmt2.executeUpdate();
      	response.sendRedirect("success.jsp");

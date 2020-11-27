@@ -18,7 +18,7 @@
        	return;
     }
     
-    String query = "select * from Users where username=? and password=?";
+    String query = "select * from Customer where c_username=? and c_password=?";
     
     
     
