@@ -48,7 +48,7 @@
     		
  
 </fieldset>
-<p>Have any questions for us? Ask below. </p>
+<p>Make a New Post:</p>
 <form action="postQuestion.jsp" method="POST">
 		Subject:<br>
       <input type="text" name="subject" size="40" required/><br>
