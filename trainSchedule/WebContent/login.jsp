@@ -13,6 +13,7 @@
 </strong>
 <br/>
 <br/>
+
 <br/>
 <fieldset>
 <legend><b>Existing User Login</b></legend>
@@ -25,6 +26,7 @@
        <input type="password" name="password" size="40" required/> <br/>
        <input type="submit" value="Submit"/>
      </form>
+     
      <br/><div style="color:red">${errorMessage}</div>
 </fieldset>
 <br/>

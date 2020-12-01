@@ -34,7 +34,8 @@
     
     if (rs.next()) {
         session.setAttribute("user", userid); // the username will be stored in the session
-        response.sendRedirect("success.jsp");
+        //response.sendRedirect("success.jsp");
+        response.sendRedirect("customerForum.jsp");
     } else {
         //out.println("Invalid password <a href='login.jsp'>try again</a>");
         request.setAttribute("errorMessage", "ERROR: Invalid login information");
