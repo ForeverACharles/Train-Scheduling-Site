@@ -16,13 +16,13 @@
 
 <p><a href='report.jsp'>Sales report per month</a></p>
 
-<p><a href='logout.jsp'>List of reservations by transit line</a></p>
+<p><a href='reservationsTL.jsp'>List of reservations by transit line</a></p>
 
-<p><a href='logout.jsp'>List of reservations by customer</a></p>
+<p><a href='reservationsCN.jsp'>List of reservations by customer</a></p>
 
-<p><a href='logout.jsp'>Listing of revenue per transit line</a></p>
+<p><a href='revenueTL.jsp'>Listing of revenue per transit line</a></p>
 
-<p><a href='logout.jsp'>Listing of revenue per customer</a></p>
+<p><a href='revenueCN.jsp'>Listing of revenue per customer</a></p>
 
 <p><a href='checkBest.jsp'>Best customer</a></p>
 
