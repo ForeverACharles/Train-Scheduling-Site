@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Best customer</title>
 </head>
 <body bgcolor = "#e6f2ff">
-	<strong>
-	GROUP 36 TRAIN SCHEDULING SYSTEM
-</strong>
+	
 <p></p>
 <p></p>
 <p></p>
@@ -19,7 +17,7 @@
 no customers<br/>
 <%} else {
 %>
-The best customer is <%=session.getAttribute("best")%>!
+The best customer is <%=session.getAttribute("best")%> with <%=session.getAttribute("bestNum")%> reservations!
 <p></p>
 <p></p>
 <p></p>

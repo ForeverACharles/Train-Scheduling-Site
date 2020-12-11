@@ -7,9 +7,6 @@
 <title>Delete form</title>
 </head>
 <body bgcolor = "#e6f2ff">
-	<strong>
-	GROUP 36 TRAIN SCHEDULING SYSTEM
-</strong>
 <p></p>
 <p></p>
 <p></p>

@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Revenue by customer</title>
 </head>
-<body>
+<body bgcolor = "#e6f2ff">
 	<%
     
-    String query = "select c_username, reserve_num from Reservation order by c_username";  
+    String query = "select c_username, sum(total_fare) from Reservation group by c_username";  
     
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
@@ -20,11 +20,11 @@
     
    
 %>
-<p>Top 5 transit lines</p>
 		<TABLE BORDER="1">
+		<caption>Revenue by Customer</caption>
             <TR>
-                <TH>Customer Username</TH>
-                <TH>Reservation Number</TH>
+                <TH>Customer username</TH>
+                <TH>Amount spent</TH>
             </TR>
             <% while(rs.next()){ %>
             <TR>
@@ -34,5 +34,8 @@
             </TR>
             <% } %>
         </TABLE>
+         <p>
+        </p>
+<a href='admin.jsp'>Return to admin page</a>
 </body>
 </html>

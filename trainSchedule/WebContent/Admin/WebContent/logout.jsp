@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor = "#e6f2ff">
 <%
 session.invalidate();
 //session.getAttribute("user");   //this will throw an error

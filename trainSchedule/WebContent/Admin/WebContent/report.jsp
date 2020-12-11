@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Monthly Sales Report</title>
 </head>
-<body>
+<body bgcolor = "#e6f2ff">
 	<%
     
-    String query = "select reserve_datetime, transit_line, c_username, origin_station_id, destination_station_id, total_fare from Reservation where is_cancelled=1 order by reserve_datetime desc";  
+    String query = "select month(reserve_datetime) as Month, year(reserve_datetime) as Year, sum(total_fare) as total_sale from Reservation where is_cancelled=1 group by Month, Year order by Year desc, Month asc";  
     
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
@@ -22,25 +22,23 @@
 %>
 <p>Top 5 transit lines</p>
 		<TABLE BORDER="1">
+		<caption>Sales Report by Month</caption>
             <TR>
-                <TH>Date</TH>
-                <TH>Transit Line</TH>
-                <TH>Customer username</TH>
-                <TH>Origin Station ID</TH>
-                <TH>Destination Station ID</TH>
-                <TH>Total Fare</TH>
+                <TH>Month</TH>
+                <TH>Year</TH>
+                <TH>Total sale</TH>
             </TR>
             <% while(rs.next()){ %>
             <TR>
                 <TD> <%= rs.getString(1) %></td>
                 <TD> <%= rs.getString(2) %></TD>
                 <TD> <%= rs.getString(3) %></TD>
-                <TD> <%= rs.getString(4) %></TD>
-                <TD> <%= rs.getString(5) %></TD>
-                <TD> <%= rs.getString(6) %></TD>
                 
             </TR>
             <% } %>
         </TABLE>
+         <p>
+        </p>
+<a href='admin.jsp'>Return to admin page</a>
 </body>
 </html>

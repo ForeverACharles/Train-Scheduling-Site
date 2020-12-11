@@ -6,8 +6,11 @@
 <meta charset="UTF-8">
 <title>Admin account</title>
 </head>
-<body>
-
+<body bgcolor = "#e6f2ff">
+<strong>
+	ADMIN SYSTEM HOME PAGE
+</strong>
+<div style="color:red">${errorMessage}</div>
 <p><a href='addForm.jsp'>Add a customer representative</a></p>
 
 <p><a href='deleteForm.jsp'>Delete a customer representative</a></p>

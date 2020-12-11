@@ -10,11 +10,7 @@
 <body>
 	<%
     int ssn = Integer.parseInt(request.getParameter("ssn"));
-    if ((ssn+"").length() != 9)
-    {
-    	request.setAttribute("errorMessage", "ERROR: invalid ssn");
-       	request.getRequestDispatcher("deleteForm.jsp").forward(request, response);
-    }
+   
     
     String query = "select * from Employee where ssn=? && e_type=0";
     
@@ -35,9 +31,10 @@
     	PreparedStatement stmt2 = con.prepareStatement(updateQuery);
     	stmt2.setInt(1, ssn);
      	stmt2.executeUpdate();
-        response.sendRedirect("admin.jsp");
+        response.sendRedirect("Success.jsp");
     } else {
-        //out.println("Invalid password <a href='login.jsp'>try again</a>");
+
+        //out.println("Invalid password <a href='deleteForm.jsp'>try again</a>");
         request.setAttribute("errorMessage", "ERROR: this customer representative does not exist");
        	request.getRequestDispatcher("deleteForm.jsp").forward(request, response);
     }

@@ -4,19 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add form</title>
+<title>Edit form</title>
 </head>
 <body bgcolor = "#e6f2ff">
-<strong>
-	GROUP 36 TRAIN SCHEDULING SYSTEM
-</strong>
 <p></p>
 <p></p>
 <p></p>
 <div style="color:red">${errorMessage}</div>
 <p>Input information for customer representative
 </p>
-<form action="addEmployee.jsp" method="POST">
+<form action="editEmployee.jsp" method="POST">
        ssn: <input type="text" name="ssn"/> <br/>
        last name:<input type="text" name="e_last_name"/> <br/>
        

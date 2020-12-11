@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Reservations by transit line</title>
 </head>
-<body>
+<body bgcolor = "#e6f2ff">
 	<%
     
-    String query = "select transit_line, sum(total_fare) from Reservation group by transit_line";  
-    
+	  String query = "select transit_line, c_username, reserve_datetime, total_fare, reserve_num from Reservation order by transit_line";  
+	    
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
@@ -20,19 +20,28 @@
     
    
 %>
-<p>Top 5 transit lines</p>
 		<TABLE BORDER="1">
+		<caption>List of Reservations by Transit Line</caption>
             <TR>
                 <TH>Transit Line</TH>
-                <TH>Amount earned</TH>
+                <TH>Customer Email</TH>
+                <TH>Reservation Time</TH>
+                <TH>Fare</TH>
+                <TH>Reservation Number</TH>
             </TR>
             <% while(rs.next()){ %>
             <TR>
                 <TD> <%= rs.getString(1) %></td>
                 <TD> <%= rs.getString(2) %></TD>
+                <TD> <%= rs.getString(3) %></TD>
+                <TD> <%= rs.getString(4) %></TD>
+                <TD> <%= rs.getString(5) %></TD>
                 
             </TR>
             <% } %>
         </TABLE>
+         <p>
+        </p>
+<a href='admin.jsp'>Return to admin page</a>
 </body>
 </html>

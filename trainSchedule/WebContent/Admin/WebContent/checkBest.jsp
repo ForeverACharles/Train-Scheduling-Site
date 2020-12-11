@@ -27,7 +27,7 @@
     
     if (rs.next()) {
         session.setAttribute("best", rs.getString("c_username")); // the username will be stored in the session
-      	
+      	session.setAttribute("bestNum", rs.getInt("num"));
         response.sendRedirect("theBest.jsp");
     } else {
         //out.println("Invalid password <a href='login.jsp'>try again</a>");

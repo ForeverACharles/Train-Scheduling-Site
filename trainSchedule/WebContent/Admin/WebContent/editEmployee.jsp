@@ -15,29 +15,24 @@
     int ssn = Integer.parseInt(request.getParameter("ssn"));
     String first_name = request.getParameter("e_first_name");   
     String last_name = request.getParameter("e_last_name"); 
-    if ((ssn+"").length() != 9)
-    {
-    	request.setAttribute("errorMessage", "ERROR: invalid ssn");
-       	request.getRequestDispatcher("deleteForm.jsp").forward(request, response);
-    }
     if (userid.length() == 0 || pwd.length() == 0)
     {
-    	request.setAttribute("errorMessage", "ERROR: Your username and password must each contain at least one character");
+    	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (userid.length() > 45 || pwd.length() > 45)
     {
-    	request.setAttribute("errorMessage", "ERROR: Your username and password cannot exceed the character limit of 45");
+    	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (first_name.length() == 0 || last_name.length() == 0)
     {
-    	request.setAttribute("errorMessage", "ERROR: Your fisrt and last name must each contain at least one character");
+    	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (first_name.length() > 30 || last_name.length() > 30)
     {
-    	request.setAttribute("errorMessage", "ERROR: Your first and last name cannot exceed the character limit of 30");
+    	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     
@@ -63,11 +58,11 @@
     	stmt2.setString(2, first_name);
     	stmt2.setString(3, userid);
     	stmt2.setString(4, pwd);
-        stmt2.setInt(5, ssn);
+        stmt2.setString(5, ssn+"");
      	stmt2.executeUpdate();
-        response.sendRedirect("admin.jsp");
+        response.sendRedirect("Success.jsp");
     } else {
-        //out.println("Invalid password <a href='login.jsp'>try again</a>");
+       // out.println("Invalid password <a href='editForm.jsp'>try again</a>");
         request.setAttribute("errorMessage", "ERROR: this customer representative does not exist");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }

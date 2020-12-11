@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Top 5 Transit Lines</title>
 </head>
-<body>
+<body bgcolor = "#e6f2ff">
 	<%
     
-    String query = "select transit_line, count(*) as num from Reservation where is_cancelled=1 group by c_username order by num desc limit 5";  
+    String query = "select transit_line, count(*) as num from Reservation where is_cancelled=1 group by transit_line order by num desc limit 5";  
     
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
@@ -23,11 +23,19 @@
 %>
 <p>Top 5 transit lines</p>
 <TABLE BORDER="1">
+			<TR>
+                <TH>Transit Line</TH>
+                <TH>Number of Reservations</TH>
+            </TR>
             <% while(rs.next()){ %>
             <TR>
                 <TD> <%= rs.getString(1) %></TD>
+                <TD> <%= rs.getString(2) %></TD>
             </TR>
             <% } %>
         </TABLE>
+         <p>
+        </p>
+<a href='admin.jsp'>Return to admin page</a>
 </body>
 </html>
