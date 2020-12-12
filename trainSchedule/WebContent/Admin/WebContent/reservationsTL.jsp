@@ -10,7 +10,7 @@
 <body bgcolor = "#e6f2ff">
 	<%
     
-	  String query = "select transit_line, c_username, reserve_datetime, total_fare, reserve_num from Reservation order by transit_line";  
+	  String query = "select transit_line, c_username, reserve_datetime, total_fare, reserve_num from Reservation where is_cancelled = 1 order by transit_line";  
 	    
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(

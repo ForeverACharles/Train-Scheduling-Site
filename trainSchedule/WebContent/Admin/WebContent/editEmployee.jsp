@@ -15,27 +15,32 @@
     int ssn = Integer.parseInt(request.getParameter("ssn"));
     String first_name = request.getParameter("e_first_name");   
     String last_name = request.getParameter("e_last_name"); 
+    boolean error=false;
     if (userid.length() == 0 || pwd.length() == 0)
     {
+    	error=true;
     	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (userid.length() > 45 || pwd.length() > 45)
     {
+    	error=true;
     	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (first_name.length() == 0 || last_name.length() == 0)
     {
+    	error=true;
     	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
     if (first_name.length() > 30 || last_name.length() > 30)
     {
+    	error=true;
     	request.setAttribute("errorMessage", "ERROR: all fields must be filled in");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
     }
-    
+    if(!error){
     
     String query = "select * from Employee where ssn=? && e_type=0";
     
@@ -63,8 +68,9 @@
         response.sendRedirect("Success.jsp");
     } else {
        // out.println("Invalid password <a href='editForm.jsp'>try again</a>");
-        request.setAttribute("errorMessage", "ERROR: this customer representative does not exist");
+        request.setAttribute("error", "ERROR: this customer representative does not exist");
        	request.getRequestDispatcher("editForm.jsp").forward(request, response);
+    }
     }
 %>
 </body>

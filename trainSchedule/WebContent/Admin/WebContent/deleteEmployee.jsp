@@ -35,7 +35,7 @@
     } else {
 
         //out.println("Invalid password <a href='deleteForm.jsp'>try again</a>");
-        request.setAttribute("errorMessage", "ERROR: this customer representative does not exist");
+        request.setAttribute("error", "ERROR: this customer representative does not exist");
        	request.getRequestDispatcher("deleteForm.jsp").forward(request, response);
     }
 %>

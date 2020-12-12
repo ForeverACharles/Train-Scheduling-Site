@@ -10,7 +10,7 @@
 <body bgcolor = "#e6f2ff">
 	<%
     
-    String query = "select c_username, sum(total_fare) from Reservation group by c_username";  
+    String query = "select c_username, sum(total_fare) from Reservation where is_cancelled=1 group by c_username";  
     
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(

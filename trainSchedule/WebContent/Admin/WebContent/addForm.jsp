@@ -10,7 +10,7 @@
 <p></p>
 <p></p>
 <p></p>
-<div style="color:red">${errorMessage}</div>
+<div style="color:red">${error}</div>
 <p>Input information for customer representative
 </p>
 <form action="addEmployee.jsp" method="POST">
