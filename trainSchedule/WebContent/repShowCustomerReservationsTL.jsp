@@ -25,7 +25,7 @@
 </form>
 <br/>
 <%
-		String query = "select * from Reservation";
+		String query = "select * from Reservation where transit_line='" + request.getParameter("transitLine") + "'";
 		String query2 = "select name from Station where station_id=?";
     
   		Class.forName("com.mysql.jdbc.Driver");
@@ -81,8 +81,7 @@
                 <TD> <%= destinationName %></TD>
                 <TD> <%= rs.getString("origin_departure_datetime") %></TD>
                 <TD> <%= rs.getString("destination_arrival_datetime") %></TD>
-                <TD><%= status %></TD>
-                
+                <TD> <%= status %></TD>
             </TR>
             <% } %>
         </TABLE>

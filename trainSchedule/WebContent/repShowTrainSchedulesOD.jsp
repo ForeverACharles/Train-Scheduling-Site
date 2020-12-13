@@ -16,13 +16,22 @@
 <br/>
 <br/>
 <%
-		String query = "select * from TrainSchedule";
+		String search_origin_id = request.getParameter("origin_station_id");
+		String search_destination_id = request.getParameter("destination_station_id");
+		
+		String query = "select * from TrainSchedule where origin_station_id=? and destination_station_id=?";
+		
+		
+		
+		
 		String query2 = "select name from Station where station_id=?";
     
   		Class.forName("com.mysql.jdbc.Driver");
     	Connection con = DriverManager.getConnection(
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
     	PreparedStatement stmt = con.prepareStatement(query);
+    	stmt.setString(1, search_origin_id);
+    	stmt.setString(2, search_destination_id);
     	ResultSet rs = stmt.executeQuery();
     	
     	PreparedStatement origin = con.prepareStatement(query2);
@@ -122,6 +131,7 @@ while(st.next())
 	<% 
 }
 %>
+
 <p><a href='customerRepHome.jsp'>Go to home page</a></p>
 </body>
 </html>

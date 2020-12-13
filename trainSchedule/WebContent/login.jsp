@@ -29,6 +29,7 @@
      
      <br/><div style="color:red">${errorMessage}</div>
 </fieldset>
+
 <br/>
 <br/>
 <p>Don't have an account? <a href='createAccount.jsp'>Create one here.</a></p>

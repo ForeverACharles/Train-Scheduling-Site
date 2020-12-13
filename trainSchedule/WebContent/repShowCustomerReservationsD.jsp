@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.ParseException"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +28,38 @@
 </form>
 <br/>
 <%
-		String query = "select * from Reservation";
+
+	
+		
+
+		String query = "select * from Reservation where date(origin_departure_datetime)='" + request.getParameter("date") + "'";
+		String query3 = "select * from Reservation";
+		
+
 		String query2 = "select name from Station where station_id=?";
     
   		Class.forName("com.mysql.jdbc.Driver");
     	Connection con = DriverManager.getConnection(
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
-    	PreparedStatement stmt = con.prepareStatement(query);
+    	
+    	PreparedStatement stmt;
+    	SimpleDateFormat sdfrmt = new SimpleDateFormat("yyyy-MM-dd");
+    	sdfrmt.setLenient(false);
+    	/* Create Date object
+     	* parse the string into date 
+         */
+    	try
+    	{	
+        	Date javaDate = sdfrmt.parse(request.getParameter("date")); 
+        	stmt = con.prepareStatement(query);
+    	}
+    	/* Date format is invalid */
+    	catch (ParseException e)
+    	{
+    		stmt = con.prepareStatement(query3);
+        	
+    	}
+    	
     	ResultSet rs = stmt.executeQuery();
     	
     	PreparedStatement origin = con.prepareStatement(query2);
@@ -63,7 +91,7 @@
             	while (rsDestination.next())
             	{
             		destinationName = rsDestination.getString("name");
-            	}   
+            	} 
             	String status = "";
             	if (rs.getString("is_cancelled").equals("0"))
             	{
@@ -81,11 +109,11 @@
                 <TD> <%= destinationName %></TD>
                 <TD> <%= rs.getString("origin_departure_datetime") %></TD>
                 <TD> <%= rs.getString("destination_arrival_datetime") %></TD>
-                <TD><%= status %></TD>
+                <TD> <%= status %></TD>
                 
             </TR>
             <% } %>
         </TABLE>
-<p><a href='customerRepHome.jsp'>Go to home page</a></p>
+        <p><a href='customerRepHome.jsp'>Go to home page</a></p>
 </body>
 </html>

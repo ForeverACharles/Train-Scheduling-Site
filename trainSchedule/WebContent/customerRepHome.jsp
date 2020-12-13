@@ -16,7 +16,7 @@
 
 <br/>
 <fieldset>
-<legend><b>Actions</b></legend>
+<legend><b>Customer Representative Actions</b></legend>
 
 <table>
 	<tr>

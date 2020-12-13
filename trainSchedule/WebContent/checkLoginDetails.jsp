@@ -31,7 +31,6 @@
     ResultSet rs = stmt.executeQuery();
     
     
-    
     if (rs.next()) {
         session.setAttribute("user", userid); // the username will be stored in the session
         //response.sendRedirect("success.jsp");
