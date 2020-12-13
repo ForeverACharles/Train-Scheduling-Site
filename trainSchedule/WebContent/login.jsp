@@ -30,5 +30,23 @@
 <br/>
 <br/>
 <p>Don't have an account? <a href='createAccount.jsp'>Create one here.</a></p>
+<br/>
+<br/>
+<br/>
+<fieldset>
+<legend><b>Employee Login</b></legend>
+<br/>
+<form action="checkLoginDetailsEmployee.jsp" method="POST">
+       
+       Username:<br/>
+      <input type="text" name="username" size="40" required/><br/>
+       Password:<br/>
+       <input type="password" name="password" size="40" required/> <br/>
+       <input type="submit" value="Submit"/>
+     </form>
+     <br/><div style="color:red">${errorMessage}</div>
+</fieldset>
+<br/>
+<br/>
 </body>
 </html>
