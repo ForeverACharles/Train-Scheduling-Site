@@ -20,10 +20,10 @@
 <form action="Reservations.jsp" method="POST">
        
        Would You Like To Reserve A Round Trip or One-way Trip?<br/>
-      <input type="radio" id="trip_type" name="triptype" value=1>
+  <input type="radio" id="trip_type" name="triptype" value=1>
   <label for="trip_type">Round Trip</label><br>
   
-  	<input type="radio" id="trip_type" name="triptype" value=0>
+  <input type="radio" id="trip_type" name="triptype" value=0>
   <label for="trip_type">One-way Trip</label><br>
 
 <!-- Child, senior or disabled? (have a check box for if disabled and in code if box is checked off, then add disable discount -->

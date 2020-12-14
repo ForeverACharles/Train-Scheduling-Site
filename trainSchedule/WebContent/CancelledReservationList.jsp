@@ -17,7 +17,7 @@
 <fieldset>
 <legend><b>Previous Reservations</b></legend>
 <br/>
-<form action="CancellingReservations.jsp" method="POST">
+<form action="CancellingReservation.jsp" method="POST">
        
        Enter Your Reserve Number: <br/>
      <input type="text" name="reservenum" size="40" required/><br/>
