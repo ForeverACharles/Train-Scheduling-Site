@@ -43,7 +43,7 @@
     PreparedStatement stmt = con.prepareStatement(reseverationquery);
     stmt.setInt(6, triptype_value);
     ResultSet rs = stmt.executeQuery();
-	double totalfare = request.getParamter("total_fare");
+	double totalfare = Double.parseDouble(request.getParameter("total_fare"));
     
 	
     if (rs.next()) {
@@ -79,7 +79,7 @@
 		}
 			
 		//5) caluculate total fare according to info from user and print it out (make user even put card details if you want)
-		System.out.println("Your totale fare: " + totalfare);
+		System.out.println("Your total fare: " + totalfare);
 		
     }
 	
