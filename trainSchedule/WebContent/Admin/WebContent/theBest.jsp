@@ -7,6 +7,11 @@
 <title>Best customer</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	
 <p></p>
 <p></p>

@@ -9,6 +9,11 @@
 <title>Top 5 Transit Lines</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
     
     String query = "select transit_line, count(*) as num from Reservation where is_cancelled=1 group by transit_line order by num desc limit 5";  

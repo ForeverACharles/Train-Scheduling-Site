@@ -8,6 +8,11 @@
 <title>Revenue by transit line</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
     
     String query = "select transit_line, sum(total_fare) from Reservation where is_cancelled=1 group by transit_line";  

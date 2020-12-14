@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
 	
     

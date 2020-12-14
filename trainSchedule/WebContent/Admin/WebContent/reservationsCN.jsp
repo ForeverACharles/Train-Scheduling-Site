@@ -8,6 +8,11 @@
 <title>Reservations by Customer</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
     
     String query = "select c_username, transit_line, reserve_datetime, total_fare, reserve_num from Reservation where is_cancelled=1 order by c_username";  
@@ -23,7 +28,7 @@
 		<TABLE BORDER="1">
 		<caption>List of Reservations by Customer</caption>
             <TR>
-                <TH>Customer Email</TH>
+                <TH>Customer Username</TH>
                 <TH>Transit Line</TH>
                 <TH>Reservation Time</TH>
                 <TH>Fare</TH>
