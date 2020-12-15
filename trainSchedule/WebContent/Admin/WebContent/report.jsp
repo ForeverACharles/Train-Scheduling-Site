@@ -8,6 +8,11 @@
 <title>Monthly Sales Report</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
     
     String query = "select month(reserve_datetime) as Month, year(reserve_datetime) as Year, sum(total_fare) as total_sale from Reservation where is_cancelled=1 group by Month, Year order by Year desc, Month asc";  

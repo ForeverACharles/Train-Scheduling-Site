@@ -8,6 +8,11 @@
 <title>Revenue by customer</title>
 </head>
 <body bgcolor = "#e6f2ff">
+
+<strong style="font-size:30px">
+GROUP 36 TRAIN SCHEDULING SYSTEM
+</strong>
+
 	<%
     
     String query = "select c_username, sum(total_fare) from Reservation where is_cancelled=1 group by c_username";  

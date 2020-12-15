@@ -20,7 +20,7 @@
 
 
 	//String reseverationquery = "select transit_line, c_username, reserve_datetime, total_fare, reserve_num, trip_type, origin_departure_datetime, destination_arrival_datetime, origin_station_id, destination_station_id from Reservation where is_cancelled = 1 order by transit_line";
-    String query = "select * from Reservation where reserve_num=? && is_cancelled=1";
+    String query = "select * from Reservation where reserve_num=? && is_cancelled=1 && c_username=?";
     
     
     
@@ -29,6 +29,7 @@
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
     PreparedStatement stmt = con.prepareStatement(query);
     stmt.setInt(1, reservenum);
+    stmt.setString(2,request.getAttribute("user").toString());
     ResultSet rs = stmt.executeQuery();
 	
     if (rs.next()) {
@@ -38,13 +39,19 @@
 	//2) ask user where they are (origin) and where they are heading to (destination)
 	// that is the origin_departure_datetime, destination_arrival_datetime, origin_station_id, destination_station_id
 	
-		String updateQuery = "update Reservation set is_cancelled=0 where reserve_num=? && is_cancelled=1 ";
+		String updateQuery = "update Reservation set is_cancelled=0 where reserve_num=? && is_cancelled=1 && c_username=? ";
 		PreparedStatement stmt2 = con.prepareStatement(updateQuery);
 		stmt2.setInt(1, reservenum);
+	    stmt2.setString(2,request.getAttribute("user").toString());
 		stmt2.executeUpdate();
 	
 	
     }
+    else {
+        // out.println("Invalid password <a href='editForm.jsp'>try again</a>");
+         request.setAttribute("error", "ERROR: could not cancel");
+        	request.getRequestDispatcher("CancelledReservation.jsp").forward(request, response);
+     }
 	
    
 %>
