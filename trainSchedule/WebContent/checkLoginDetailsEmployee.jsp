@@ -43,7 +43,7 @@
         else
         {
 			session.setAttribute("session_type", "admin");
-			response.sendRedirect("Admin/WebContent/admin.jsp");
+			response.sendRedirect("Admin/admin.jsp");
         }
     } else {
         //out.println("Invalid password <a href='login.jsp'>try again</a>");
