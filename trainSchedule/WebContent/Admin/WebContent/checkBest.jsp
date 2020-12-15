@@ -18,7 +18,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 	
     
     
-    String query = "select c_username, count(*) as num from Reservation where is_cancelled=1 group by c_username having num >= all (select count(*) from Reservation group by c_username)";
+    String query = "select c_username, count(*) as num from Reservation where is_cancelled=1 group by c_username having num >= all (select count(*) from Reservation where is_cancelled = 1 group by c_username)";
     
     
     

@@ -15,24 +15,32 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 
 	<%
     
-    String query = "select c_username, transit_line, reserve_datetime, total_fare, reserve_num from Reservation where is_cancelled=1 order by c_username";  
-    
-  	Class.forName("com.mysql.jdbc.Driver");
+    String query = "select distinct c_username, transit_line, origin_departure_datetime, c.name, a.track_number, d.name, b.track_number, total_fare, reserve_num from Reservation, Station c, Station d, Stop a, Stop b where Reservation.origin_departure_datetime = a.departure_datetime && Reservation.origin_station_id = c.station_id && Reservation.destination_arrival_datetime = b.arrival_datetime && Reservation.destination_station_id = d.station_id && Reservation.is_cancelled = 1 order by Reservation.c_username";  
+		
+ 	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
     PreparedStatement stmt = con.prepareStatement(query);
-    ResultSet rs = stmt.executeQuery();
-    
-   
+    ResultSet rs = stmt.executeQuery(); 
 %>
 		<TABLE BORDER="1">
-		<caption>List of Reservations by Customer</caption>
+		<caption>Reservations by Transit Line</caption>
             <TR>
+            
                 <TH>Customer Username</TH>
                 <TH>Transit Line</TH>
-                <TH>Reservation Time</TH>
+                
+                <TH>Departure Time</TH>
+                <TH>Origin Station</TH>
+                
+                <TH>Origin Track Number</TH>
+                
+                <TH>Destination Station</TH>
+                
+                <TH>Destination Track Number</TH>
                 <TH>Fare</TH>
                 <TH>Reservation Number</TH>
+                
             </TR>
             <% while(rs.next()){ %>
             <TR>
@@ -42,8 +50,15 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
                 <TD> <%= rs.getString(4) %></TD>
                 <TD> <%= rs.getString(5) %></TD>
                 
+                <TD> <%= rs.getString(6) %></TD>
+                <TD> <%= rs.getString(7) %></TD>
+                
+                <TD> <%= rs.getString(8) %></TD>
+                <TD> <%= rs.getString(9) %></TD>
+                
             </TR>
             <% } %>
+            
         </TABLE>
         <p>
         </p>
