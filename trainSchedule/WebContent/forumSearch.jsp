@@ -15,6 +15,9 @@
 <br/>
 <br/>
 <br/>
+<%
+	String session_type = (String)session.getAttribute("session_type");
+%>
 <form action="forumSearch.jsp">
 	Search by keyword: <input type="text" name="keyword" size="40" required/> <input type="submit" value="search">
 </form>
@@ -55,14 +58,28 @@
     		
  
 </fieldset>
-<p>Have any questions for us? Ask below. </p>
-<form action="postQuestion.jsp" method="POST">
+<%
+if (session_type.equals("customer"))
+{
+	%> 
+		<p>Have any questions for us? Ask below:</p>
+		<form action="postQuestion.jsp" method="POST">
 		Subject:<br>
-      <input type="text" name="subject" size="40" required/><br>
-      Body (max 500 characters):<br>
-	<textarea name="message" rows="10" cols="100" required></textarea>
-	<br>
-	<input type="submit">
-</form>
+  		<input type="text" name="subject" size="40" required/><br>
+  		Body (max 500 characters):<br>
+		<textarea name="message" rows="10" cols="100" required></textarea>
+		<br>
+		<input type="submit" value="submit">
+		</form>
+		<p><a href='customerHome.jsp'>Back to home page.</a></p>
+	<% 
+	
+}
+else
+{
+	
+	%><p><a href='customerRepHome.jsp'>Back to home page.</a></p><%
+}
+%>
 </body>
 </html>

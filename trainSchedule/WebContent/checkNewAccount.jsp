@@ -54,7 +54,7 @@
     	stmt2.setString(5, pwd);
         
      	stmt2.executeUpdate();
-     	response.sendRedirect("success.jsp");
+     	response.sendRedirect("customerHome.jsp");
     } 
     
     else {

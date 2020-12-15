@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="../CSS/loginStyles.css" type="text/css">
 <meta charset="UTF-8">
-<title>Customer Representative Home</title>
+<title>Customer Home</title>
 </head>
 <body bgcolor = "#e6f2ff">
 <strong style="font-size:30px">
@@ -16,23 +16,23 @@
 
 <br/>
 <fieldset>
-<legend><b>Customer Representative Actions</b></legend>
+<legend><b>Customer Actions</b></legend>
 
 <table>
 	<tr>
 		<td>
+			<form action="searchSched.jsp">
+				<input type="submit" value="Make a Reservation">
+			</form>
+		</td> 
+		<td>
+			<form action="ReservationList.jsp">
+				<input type="submit" value="See/Cancel Reservations">
+			</form>
+		</td> 
+		<td>
 			<form action="customerForum.jsp">
-				<input type="submit" value="Go to Customer Forum">
-			</form>
-		</td> 
-		<td>
-			<form action="repShowTrainSchedules.jsp">
-				<input type="submit" value="List Train Schedules">
-			</form>
-		</td> 
-		<td>
-			<form action="repShowCustomerReservations.jsp">
-				<input type="submit" value="List Customer Reservations">
+				<input type="submit" value="Go to Forum">
 			</form>
 		</td>
 	</tr>

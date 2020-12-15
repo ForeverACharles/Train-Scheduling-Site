@@ -18,9 +18,10 @@
 <%
 	String askUsername = (String)session.getAttribute("c_username");
 	String askDateTime = (String)session.getAttribute("message_datetime");
+	String formatDate = (String)session.getAttribute("formatDate");
 %>
 <fieldset>
-<legend><b><% out.println(askUsername);%></b><% out.println(" posted on " + askDateTime);%></legend>
+<legend><b><% out.println(askUsername);%></b><% out.println(" posted on " + formatDate);%></legend>
 <% Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
     		"jdbc:mysql://trainschedule36.cs9to86ym4fs.us-east-2.rds.amazonaws.com:3306/trainSchedule", "admin", "cs336group36");
@@ -45,7 +46,7 @@
 <br>
 <br>
 <%
-	String responds = "select r_username, response_datetime, response_content from Response where originalPoster = '" 
+	String responds = "select r_username, date_format(response_datetime, '%b %D, %Y') formatDate, response_datetime, response_content from Response where originalPoster = '" 
 						+ askUsername + "' and originalDatetime = '" + askDateTime + "' order by response_datetime asc";
 
 	Statement stmt2 = con.createStatement();
@@ -55,7 +56,7 @@
 	{
 		%>
 			<fieldset><legend><b><%out.println(rs2.getString("r_username"));%></b> <%out.println(" replied on " + 
-		rs2.getString("response_datetime")); %></legend>
+		rs2.getString("formatDate")); %></legend>
 			<% 
 				out.println(rs2.getString("response_content"));
 			%>
@@ -72,7 +73,6 @@
 	<br>
 	<input type="submit">
 </form>
-
 <p><a href='customerForum.jsp'>Back to discussions</a></p>
 </body>
 </html>

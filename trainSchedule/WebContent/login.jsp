@@ -16,8 +16,9 @@
 
 <br/>
 <fieldset>
-<legend><b>Existing User Login</b></legend>
+<legend><b>Customer Login</b></legend>
 <br/>
+
 <form action="checkLoginDetails.jsp" method="POST">
        
        Username:<br/>
@@ -26,13 +27,12 @@
        <input type="password" name="password" size="40" required/> <br/>
        <input type="submit" value="Submit"/>
      </form>
-     
-     <br/><div style="color:red">${errorMessage}</div>
+     <p>Don't have an account? <a href='createAccount.jsp'>Create one here.</a></p>
+    <div style="color:red">${errorMessage}</div>
 </fieldset>
 
 <br/>
 <br/>
-<p>Don't have an account? <a href='createAccount.jsp'>Create one here.</a></p>
 <br/>
 <br/>
 <br/>
@@ -47,7 +47,7 @@
        <input type="password" name="password" size="40" required/> <br/>
        <input type="submit" value="Submit"/>
      </form>
-     <br/><div style="color:red">${errorMessage}</div>
+     <br/><div style="color:red">${errorMessageEmployee}</div>
 </fieldset>
 <br/>
 <br/>

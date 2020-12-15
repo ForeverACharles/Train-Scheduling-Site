@@ -34,10 +34,20 @@
     
     if (rs.next()) {
         session.setAttribute("user", userid); // the username will be stored in the session
-        response.sendRedirect("success.jsp");
+        
+        if (rs.getInt("e_type") == 0)
+        {
+        	session.setAttribute("session_type", "customer_representative");
+        	response.sendRedirect("customerRepHome.jsp");
+        }
+        else
+        {
+			session.setAttribute("session_type", "admin");
+			response.sendRedirect("Admin/WebContent/admin.jsp");
+        }
     } else {
         //out.println("Invalid password <a href='login.jsp'>try again</a>");
-        request.setAttribute("errorMessage", "ERROR: Invalid login information");
+        request.setAttribute("errorMessageEmployee", "ERROR: Invalid login information");
        	request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 %>

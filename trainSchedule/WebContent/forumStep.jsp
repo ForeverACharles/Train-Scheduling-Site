@@ -10,9 +10,11 @@
 <%
 String askUsername = request.getParameter("c_username");
 String askDateTime = request.getParameter("message_datetime");
+String formatDate = request.getParameter("formatDate");
 
 session.setAttribute("c_username", askUsername);
 session.setAttribute("message_datetime", askDateTime);
+session.setAttribute("formatDate", formatDate);
 
 response.sendRedirect("displayQuestion.jsp");
 

@@ -132,7 +132,7 @@ tr:nth-child(even)
 	String timeFormat = "%h:%i%p";
 	String dateTimeFormat = "%h:%i%p %b %D, %Y";
 	query = "select TS.transit_line Name, O.name Origin, D.name Destination, date_format(TS.origin_departure_datetime, '%b %D, %Y') TravelDate, TS.base_fare Fare, TS.cancellationStatus Running from (TrainSchedule TS left join Station O on TS.origin_station_id = O.station_id) left join Station D on TS.destination_station_id = D.station_id order by Name";
-	String query2 = "select TS.transit_line Name, O.name Origin, D.name Destination, date_format(TS.origin_departure_datetime, '%b %D, %Y') TravelDate, date_format(TS.origin_departure_datetime, '%h:%i%p') DepartureTime, date_format(TS.destination_arrival_datetime, '%h:%i%p') ArrivalTime, TS.base_fare Fare, TS.cancellationStatus Running from (TrainSchedule TS left join Station O on TS.origin_station_id = O.station_id) left join Station D on TS.destination_station_id = D.station_id order by Name";
+	String query2 = "select TS.transit_line Name, TS.origin_departure_datetime, TS.destination_arrival_datetime, TS.origin_station_id, TS.destination_station_id, O.name Origin, D.name Destination, date_format(TS.origin_departure_datetime, '%b %D, %Y') TravelDate, date_format(TS.origin_departure_datetime, '%h:%i%p') DepartureTime, date_format(TS.destination_arrival_datetime, '%h:%i%p') ArrivalTime, TS.base_fare Fare, TS.cancellationStatus Running from (TrainSchedule TS left join Station O on TS.origin_station_id = O.station_id) left join Station D on TS.destination_station_id = D.station_id order by Name";
 
     try
     {
@@ -177,9 +177,22 @@ tr:nth-child(even)
 	            	} else { out.println("No"); }	
 	            	%>
 	            	</td>
+	            	
+	            	<td>
+	            		<form action="CreatingReservation.jsp" method="POST">
+	            			<input type="hidden" name="transit_line" value = "<%=rs.getString("Name")%>"/>
+	            			<input type="hidden" name="origin_departure_datetime" value = "<%=rs.getString("TS.origin_departure_datetime")%>"/>
+	            			<input type="hidden" name="destination_arrival_datetime" value = "<%=rs.getString("TS.destination_arrival_datetime")%>"/>
+	            			<input type="hidden" name="origin_station_id" value = "<%=rs.getString("TS.origin_station_id")%>"/>
+	            			<input type="hidden" name="destination_station_id" value = "<%=rs.getString("TS.destination_station_id")%>"/>
+	            			<input type="hidden" name="base_fare" value = "<%=rs.getString("Fare")%>"/>
+	            			<a href="#" onclick="this.parentNode.submit();"> Reserve </a>
+	            		</form>
+	            	</td>
    
             	</tr> 
             	<% 
+            	
         			
         	} while(rs.next());
         }
@@ -193,5 +206,6 @@ tr:nth-child(even)
 	}%>
 	</table>
 	<br><br>
+<p><a href='customerHome.jsp'>Back to home page.</a></p>
 </body>
 </html>

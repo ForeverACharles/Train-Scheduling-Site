@@ -157,13 +157,13 @@ tr:nth-child(even)
 	}
 	
 	%>
-	
-	
-   
-
-
-
-
+<table>
+<br>
+<br>
+	<tr>
+		<a href='searchSched.jsp'>Back to schedules</a>
+	</tr>
+</table>
 
 </body>
 </html>
