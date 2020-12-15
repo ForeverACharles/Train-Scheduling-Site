@@ -14,7 +14,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 </strong>
 
 	<%
-    request.setAttribute("user", "philFish");
+    //request.setAttribute("user", "philFish");
 	  String query = "select origin_departure_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where is_cancelled = 1 && c_username = ? && origin_departure_datetime >= (SELECT CURRENT_TIMESTAMP) order by origin_departure_datetime desc";  
 		   
   	Class.forName("com.mysql.jdbc.Driver");
