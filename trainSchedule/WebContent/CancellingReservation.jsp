@@ -49,7 +49,7 @@
     }
     else {
         // out.println("Invalid password <a href='editForm.jsp'>try again</a>");
-         request.setAttribute("error", "ERROR: this customer representative does not exist");
+         request.setAttribute("error", "ERROR: could not cancel");
         	request.getRequestDispatcher("CancelledReservation.jsp").forward(request, response);
      }
 	

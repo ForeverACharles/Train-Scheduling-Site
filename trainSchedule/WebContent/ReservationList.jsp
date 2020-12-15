@@ -14,8 +14,8 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 </strong>
 
 	<%
-    //request.setAttribute("user", "tmisirpash");
-	  String query = "select reserve_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where is_cancelled = 1 && c_username = ? && reserve_datetime >= (SELECT CURRENT_TIMESTAMP) order by reserve_datetime desc";  
+    request.setAttribute("user", "philFish");
+	  String query = "select origin_departure_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where is_cancelled = 1 && c_username = ? && origin_departure_datetime >= (SELECT CURRENT_TIMESTAMP) order by origin_departure_datetime desc";  
 		   
   	Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
@@ -27,7 +27,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 		<TABLE BORDER="1">
 		<caption>Current Reservations</caption>
             <TR>
-                <TH>Reservation Time</TH>
+                <TH>Departure Time</TH>
                 <TH>Transit Line</TH>
                 <TH>Customer Username</TH>
                 <TH>Fare</TH>
@@ -44,20 +44,20 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
             </TR>
             <% } %>
             
+        </TABLE>
 	<%
-	  String query2 = "select reserve_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where is_cancelled = 1 && c_username = ? && reserve_datetime < (SELECT CURRENT_TIMESTAMP) order by reserve_datetime desc";  
+	  String query2 = "select origin_departure_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where c_username = ? && is_cancelled=1 && origin_departure_datetime < (SELECT CURRENT_TIMESTAMP) order by origin_departure_datetime desc";  
 	 PreparedStatement stmt2 = con.prepareStatement(query2);
     stmt2.setString(1,request.getAttribute("user").toString());
     ResultSet rs2 = stmt2.executeQuery();
    
 %>
-        </TABLE>
          <p>
         </p>
         <TABLE BORDER="1">
 		<caption>Past Reservations</caption>
             <TR>
-                <TH>Reservation Time</TH>
+                <TH>Departure Time</TH>
                 <TH>Transit Line</TH>
                 <TH>Customer Username</TH>
                 <TH>Fare</TH>
@@ -70,7 +70,34 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
                 <TD> <%= rs2.getString(3) %></TD>
                 <TD> <%= rs2.getString(4) %></TD>
                 <TD> <%= rs2.getString(5) %></TD>
-                
+            </TR>
+            <% } %>
+        </TABLE>
+        <%
+	  String query3 = "select origin_departure_datetime, transit_line, c_username, total_fare, reserve_num from Reservation where c_username = ? && is_cancelled = 0";  
+	 PreparedStatement stmt3 = con.prepareStatement(query3);
+    stmt3.setString(1,request.getAttribute("user").toString());
+    ResultSet rs3 = stmt3.executeQuery();
+   
+%>
+         <p>
+        </p>
+        <TABLE BORDER="1">
+		<caption>Cancelled Reservations</caption>
+            <TR>
+                <TH>Departure Time</TH>
+                <TH>Transit Line</TH>
+                <TH>Customer Username</TH>
+                <TH>Fare</TH>
+                <TH>Reservation Number</TH>
+            </TR>
+            <% while(rs3.next()){ %>
+            <TR>
+                <TD> <%= rs3.getString(1) %></td>
+                <TD> <%= rs3.getString(2) %></TD>
+                <TD> <%= rs3.getString(3) %></TD>
+                <TD> <%= rs3.getString(4) %></TD>
+                <TD> <%= rs3.getString(5) %></TD>
             </TR>
             <% } %>
         </TABLE>
