@@ -26,6 +26,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 %>
 		<br>
 		<br>
+		<div style="color:green">${successMessage}</div>
 		<TABLE BORDER="1">
 		<caption><b>Current</b> Reservations</caption>
             <TR>
@@ -44,8 +45,19 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
                 <TH>Reservation Number</TH>
                 
             </TR>
-            <% while(rs.next()){ %>
-            <TR>
+            <% while(rs.next()){           
+            
+            	String no = (String)session.getAttribute("reserve_num");
+            	if (no != null && no.equals(rs.getString("reserve_num")))
+            	{
+            		%> <tr style="color:green"> <%
+            	}
+            	else
+            	{
+            		%> <tr> <%
+            	}
+            %>
+            
                 <TD> <%= rs.getString(1) %></td>
                 <TD> <%= rs.getString(2) %></TD>
                 <TD> <%= rs.getString(3) %></TD>

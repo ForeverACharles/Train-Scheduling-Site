@@ -46,6 +46,7 @@
 		no = Integer.parseInt(numSet.getString("max(reserve_num)")) + 1;
 	}
 	System.out.println(no);
+	session.setAttribute("reserve_num", ""+no);
 	
 	
     String reseverationquery = "insert into Reservation(reserve_num, reserve_datetime, total_fare, trip_type, c_username, transit_line, origin_departure_datetime, destination_arrival_datetime, origin_station_id, destination_station_id, is_cancelled) values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -87,7 +88,8 @@
     
     stmt.executeUpdate();
     
-    response.sendRedirect("ReservationList.jsp");
+    request.setAttribute("successMessage", "Success! Your reservation has been entered.");
+    request.getRequestDispatcher("ReservationList.jsp").forward(request, response);
 	//double totalfare = Double.parseDouble(request.getParameter("total_fare"));
     
 	

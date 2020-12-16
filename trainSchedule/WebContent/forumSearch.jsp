@@ -34,7 +34,7 @@
     String keyword = request.getParameter("keyword");
     
     Statement stmt = con.createStatement();
-    ResultSet rs = stmt.executeQuery("select message_datetime, c_username, message_subject from Message order by message_datetime desc");
+    ResultSet rs = stmt.executeQuery("select date_format(message_datetime, '%b %D, %Y') formatDate, message_datetime, c_username, message_subject from Message order by message_datetime desc");
     while(rs.next())
     {
     	if (rs.getString("message_subject").toLowerCase().contains(keyword.toLowerCase()))
@@ -45,6 +45,7 @@
     		<form action="forumStep.jsp" method="post">
     			<input type="hidden" name="c_username" value="<%=rs.getString("c_username")%>"/>
     			<input type="hidden" name="message_datetime" value="<%=rs.getString("message_datetime")%>"/>
+    			<input type="hidden" name="formatDate" value="<%=rs.getString("formatDate")%>"/>
     			<a href="#" onclick="this.parentNode.submit();"> <%out.println(rs.getString("message_subject"));%></a>
     		</form>
     		<% 

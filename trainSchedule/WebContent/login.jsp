@@ -13,14 +13,12 @@
 </strong>
 <br/>
 <br/>
-
 <br/>
 <fieldset>
 <legend><b>Customer Login</b></legend>
 <br/>
 
 <form action="checkLoginDetails.jsp" method="POST">
-       
        Username:<br/>
       <input type="text" name="username" size="40" required/><br/>
        Password:<br/>
