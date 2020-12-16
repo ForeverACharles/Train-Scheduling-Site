@@ -14,6 +14,7 @@
 </strong>
 <br/>
 <br/>
+<div style="color:red">${responseError}</div>
 <br/>
 <%
 	String askUsername = (String)session.getAttribute("c_username");

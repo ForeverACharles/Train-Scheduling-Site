@@ -14,6 +14,15 @@
 	String username = (String)session.getAttribute("user");
 	String newResponse = request.getParameter("response");
 	
+	if (newResponse.length() >= 1000)
+	{
+		request.setAttribute("responseError", "ERROR: Your reply was too long.");
+	    request.getRequestDispatcher("displayQuestion.jsp").forward(request, response);
+	    return;
+	}
+	
+	
+	
 	java.util.Date utilDate = new java.util.Date();
 	
 	String updateQuery = "insert into Response(r_username, response_datetime, response_content, originalPoster, originalDatetime) values(?,?,?,?,?)";
