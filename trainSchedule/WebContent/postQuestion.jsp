@@ -13,6 +13,22 @@
     String newMessage = request.getParameter("message");
 	String username = (String)session.getAttribute("user");
 	
+	if (newSubject.length() >= 100)
+	{
+		request.setAttribute("forumError", "ERROR: Your subject line was too long.");
+	    request.getRequestDispatcher("customerForum.jsp").forward(request, response);
+	    return;
+	}
+	if (newMessage.length() >= 1000)
+	{
+		request.setAttribute("forumError", "ERROR: Your message was too long.");
+	    request.getRequestDispatcher("customerForum.jsp").forward(request, response);
+	    return;
+	}
+		
+	
+	
+	
 	java.util.Date utilDate = new java.util.Date();
 	
 	String updateQuery = "insert into Message(message_datetime, message_content, c_username, message_subject) values(?,?,?,?)";

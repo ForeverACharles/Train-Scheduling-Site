@@ -65,7 +65,7 @@ if (session_type.equals("customer"))
 	%> 
 		<p>Have any questions for us? Ask below:</p>
 		<form action="postQuestion.jsp" method="POST">
-		Subject:<br>
+		Subject (max 100 characters):<br>
   		<input type="text" name="subject" size="40" required/><br>
   		Body (max 500 characters):<br>
 		<textarea name="message" rows="10" cols="100" required></textarea>

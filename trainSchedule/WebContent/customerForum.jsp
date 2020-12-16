@@ -24,6 +24,9 @@
 <form action="customerForum.jsp">
 	<input type="submit" value="Show all posts">
 </form>
+<br>
+<div style="color:red">${forumError}</div>
+<br>
 <fieldset>
 <legend><b>Discussions</b></legend>
 <% Class.forName("com.mysql.jdbc.Driver");
@@ -58,7 +61,7 @@
 		%> 
 			<p>Have any questions for us? Ask below:</p>
 			<form action="postQuestion.jsp" method="POST">
-			Subject:<br>
+			Subject (max 100 characters):<br>
       		<input type="text" name="subject" size="40" required/><br>
       		Body (max 500 characters):<br>
 			<textarea name="message" rows="10" cols="100" required></textarea>
