@@ -24,8 +24,10 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
     stmt.setString(1,(String)session.getAttribute("user"));
     ResultSet rs = stmt.executeQuery(); 
 %>
+		<br>
+		<br>
 		<TABLE BORDER="1">
-		<caption>Current Reservations</caption>
+		<caption><b>Current</b> Reservations</caption>
             <TR>
                 <TH>Departure Time</TH>
                 <TH>Transit Line</TH>
@@ -79,7 +81,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 	    ResultSet rs2 = stmt2.executeQuery(); 
 	%>
 			<TABLE BORDER="1">
-			<caption>Past Reservations</caption>
+			<caption><b>Past</b> Reservations</caption>
 	            <TR>
 	                <TH>Departure Time</TH>
 	                <TH>Transit Line</TH>
@@ -127,7 +129,7 @@ GROUP 36 TRAIN SCHEDULING SYSTEM
 		    ResultSet rs3 = stmt3.executeQuery(); 
 		%>
 				<TABLE BORDER="1">
-				<caption>Cancelled Reservations</caption>
+				<caption><b>Cancelled</b> Reservations</caption>
 		            <TR>
 		                <TH>Departure Time</TH>
 		                <TH>Transit Line</TH>

@@ -60,11 +60,11 @@
     }
    	if (childorsenior.equals("Child")) 
    	{
-   		total_fare *= 0.25;
+   		total_fare *= 0.75;
    	}
    	if (childorsenior.equals("Senior")) 
    	{
-   		total_fare *= 0.35;
+   		total_fare *= 0.65;
    	}
    	if (disabled != null) 
    	{

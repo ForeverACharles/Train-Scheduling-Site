@@ -24,20 +24,20 @@
 	System.out.println(request.getParameter("base_fare"));
 %>
 <fieldset>
-<legend><b>Creating Reservation</b></legend>
+<legend><b>Questions</b></legend>
 <br/>
 <form action="Reservations.jsp" method="POST">
        
-       Would You Like To Reserve A Round Trip or One-way Trip?<br/>
+       Would you like to reserve a round trip or a one-way trip?<br/>
        <div>
   <input type="radio" id="trip_type" name="triptype" value=1 required>
   <label for="trip_type">Round Trip</label><br>
   
   <input type="radio" id="trip_type" name="triptype" value=0 required>
-  <label for="trip_type">One-way Trip</label><br>
+  <label for="trip_type">One-way Trip</label><br><br>
 </div>
 <!-- Child, senior or disabled? (have a check box for if disabled and in code if box is checked off, then add disable discount -->
-      	Are you a...<br/>
+      	This reservation is for a(n) ...<br/>
       	<div>
       	<input type="radio" id="user" name="userage" value="Child" required>
   Child</label><br>
@@ -46,8 +46,9 @@
   	<input type="radio" id="user" name="userage" value="Adult" required>
   Adult</label><br>
   </div>
+  <br>
    <input type="checkbox" id="disabled" name="disabled" value="1">
-  <label for="disabled">Disabled</label><br>
+  <label for="disabled">Check here if you are disabled.</label><br><br>
   
        <input type="submit" value="Submit"/>
      </form>
@@ -55,5 +56,6 @@
 </fieldset>
 <br/>
 <br/>
+<p><a href='searchSched.jsp'>Back to schedules</a></p>
 </body>
 </html>

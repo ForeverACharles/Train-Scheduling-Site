@@ -38,6 +38,7 @@
     
     if (!rs.next()) {
     	session.setAttribute("user", userid); // the username will be stored in the session
+    	session.setAttribute("session_type", "customer");
     	
     	//Customer should be prompted for this data.
     	String email = "name@gmail.com";
