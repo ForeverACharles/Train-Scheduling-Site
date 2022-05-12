@@ -11,7 +11,7 @@ Frontend designed in HTML with backend handled by Java Server Pages and MySQL. W
 - Train schedule Browsing & Search functionality
 - Ticket Reservation functionaliy
 - User support forum
-- Admin dashboard with sull system management
+- Admin dashboard with full system management
 
 ## Demo
 
